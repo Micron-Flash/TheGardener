@@ -7,11 +7,11 @@
     "run_update":false,
     "ota_remote_files": [
         "main.py",
-        "wifi.py",
-        "endpoints.py",
-        "pychage.json"
+        "lib/wifi.py",
+        "lib/endpoints.py",
+        "pyckage.json"
     ],
-    "ota_working_dir": "pico",
+    "ota_working_dir": "esp32",
     "ota_git_repo": "TheGardener",
     "ota_git_user": "Micron-Flash",
     "ota_branch": "main",

@@ -1,0 +1,9 @@
+{
+    "external_dependencies": [
+        {
+            "name": "senko.py",
+            "url": "github:RangerDigital/senko/senko/senko.py",
+            "branch_or_tag":"v2.0.4"
+        }
+    ]
+}

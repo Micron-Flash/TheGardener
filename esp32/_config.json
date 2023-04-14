@@ -1,0 +1,19 @@
+{
+    "led_pin":17,
+    "ssid": "",
+    "password": "=",
+    "force_external_dependencies_update": false,
+    "check_for_updates":false,
+    "run_update":false,
+    "ota_remote_files": [
+        "main.py",
+        "wifi.py",
+        "endpoints.py",
+        "pychage.json"
+    ],
+    "ota_working_dir": "pico",
+    "ota_git_repo": "TheGardener",
+    "ota_git_user": "Micron-Flash",
+    "ota_branch": "main",
+    "GitHubAuthToken": ""
+}

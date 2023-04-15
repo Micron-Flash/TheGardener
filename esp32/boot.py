@@ -1,6 +1,9 @@
-import esp32.wifi as wifi
+import os, machine
+os.mount(machine.SDCard(slot=2,freq=10000), "/lib")
+
+import wifi
 import json
-import esp32.mip as mip
+import mip
 import machine
 import gc
 from os import listdir, mkdir

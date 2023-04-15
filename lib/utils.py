@@ -1,5 +1,5 @@
 from urequests import get
-import esp32.wifi as wifi
+import wifi
 import json
 from uio import open
 import machine

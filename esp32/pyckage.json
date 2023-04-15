@@ -4,6 +4,11 @@
             "name": "senko.py",
             "url": "github:RangerDigital/senko/senko/senko.py",
             "branch_or_tag":"v2.0.4"
+        },
+        {
+            "name": "microdot.py",
+            "url": "github:miguelgrinberg/microdot/src/microdot.py",
+            "branch_or_tag":"v1.3.0"
         }
     ]
 }

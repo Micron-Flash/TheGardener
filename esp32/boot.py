@@ -1,8 +1,6 @@
-# boot.py runs once at power ups and restarts.
-
-import wifi
+import esp32.wifi as wifi
 import json
-import mip
+import esp32.mip as mip
 import machine
 import gc
 from os import listdir, mkdir
@@ -25,6 +23,7 @@ def main(config):
             check_for_updates(config)
     else:
         print("Cant Connect skipping stuff that might be needed")
+    wifi.disconnect()
 
 def check_for_updates(config):
     import senko # type: ignore
@@ -64,6 +63,7 @@ def download_dependencies():
         else:
             print(lib['name'] + ' missing, downloading from the internet')
             mip.install(lib['url'], version = lib['branch_or_tag'])
+    machine.reset()    
     
 def load_json(file_string):
     file = open(file_string)
@@ -74,3 +74,4 @@ def load_json(file_string):
 if __name__ == "__main__":
     config = load_json('config.json')
     main(config)
+    os.unmount('/lib')

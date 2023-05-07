@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #71b688;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin-top: 50px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+    }
+    
+    .garden-image {
+      max-width: 200px;
+      margin: 0 auto;
+      display: block;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #4caf50;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Load the configuration JSON file
+      $.getJSON("config.json", function(config) {
+        // Iterate over the properties in the config object
+        Object.keys(config).forEach(function(key) {
+          var value = config[key];
+          
+          // Create a label for the field
+          var label = $("<label>").attr("for", key).text(key + ":");
+          
+          // Create the input field based on the value type
+          var input;
+          if (key === "password") {
+            input = $("<input>").attr("type", "password").attr("id", key).val(value).addClass("form-control");
+          } else if (typeof value === "boolean") {
+            input = $("<input>").attr("type", "checkbox").attr("id", key).prop("checked", value).addClass("form-control");
+          } else {
+            input = $("<input>").attr("type", "text").attr("id", key).val(value).addClass("form-control");
+          }
+          
+          // Create a form group to wrap the label and input field
+          var formGroup = $("<div>").addClass("form-group").append(label, input);
+          
+          // Append the form group to the container
+          $("#fields-container").append(formGroup);
+        });
+      });
+      
+      // Save the updated configuration
+      $("#save-button").click(function() {
+        var config = {};
+        
+        // Iterate over the input fields and collect the values
+        $("input").each(function() {
+          var key = $(this).attr("id");
+          var value;
+          
+          if ($(this).attr("type") === "checkbox") {
+            value = $(this).prop("checked");
+          } else {
+            value = $(this).val();
+          }
+          
+          config[key] = value;
+        });
+        
+        // Send the updated configuration to the server
+        $.ajax({
+          type: "POST",
+          url: "/updateConfig", // Replace with the server-side script to handle the update
+          data: JSON.stringify(config),
+          contentType: "application/json",
+          success: function(response) {
+            // Handle the response if needed
+            console.log(response);
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <img src="garden.png" alt="Vegetable Garden" class="garden-image">
+    <h1>Dashboard</h1>
+    
+    <div id="fields-container"></div>
+    
+    <button id="save-button" class="btn btn-primary mt-3">Save</button>
+  </div>
+</body>
+</html>

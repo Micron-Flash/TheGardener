@@ -1,2 +1,0 @@
-import os, machine
-os.mount(machine.SDCard(slot=2,freq=10000), "/lib")

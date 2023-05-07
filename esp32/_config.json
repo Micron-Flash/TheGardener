@@ -1,7 +1,7 @@
 {
     "led_pin":17,
     "ssid": "",
-    "password": "=",
+    "password": "",
     "force_external_dependencies_update": false,
     "check_for_updates":false,
     "run_update":false,

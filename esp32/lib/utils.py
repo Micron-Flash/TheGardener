@@ -3,6 +3,7 @@ import wifi
 import json
 from uio import open
 import machine
+
 rtc = machine.RTC()
 
 def getCurrentTime(config):
@@ -17,8 +18,9 @@ def getCurrentTime(config):
     
     
 def getConfig():
-    file = open('../config.json')
+    file = open('../config.json', 'r')
     config = json.load(file)
+    file.close()
     return config
 
 def setRTC():
@@ -103,14 +105,10 @@ def tuple_to_iso_string(datetime):
     # Return the ISO string
     return iso_string
 
-def write_to_sd(text):
-    f = open('/lib/sd/data.txt', 'w')
-    f.write(text)
-    f.close()
-    
-def edit_file(file, obj):
-    with open('/lib/sd/' + file , 'r') as f:
-        data = json.load(f)
-    data.append(obj)
-    with open('data.json', 'w') as f:
-        json.dump(data, f)
+
+def update_config(config_key, config_value):
+    config = getConfig()
+    config[config_key] = config_value
+    with open('../config.json', 'w') as newConfig:
+        json.dump(config, newConfig)
+    newConfig.close()

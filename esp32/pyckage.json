@@ -9,21 +9,6 @@
             "name": "microdot.py",
             "url": "github:miguelgrinberg/microdot/src/microdot.py",
             "branch_or_tag":"v1.3.0"
-        },
-        {
-            "name": "endpointsV2.py",
-            "url": "github:Micron-Flash/TheGardener/lib/endpointsV2.py",
-            "branch_or_tag":"develop"
-        },
-        {
-            "name": "soilSensor.py",
-            "url": "github:Micron-Flash/TheGardener/lib/soilSensor.py",
-            "branch_or_tag":"develop"
-        },
-        {
-            "name": "utils.py",
-            "url": "github:Micron-Flash/TheGardener/lib/utils.py",
-            "branch_or_tag":"develop"
         }
     ]
 }
